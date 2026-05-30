@@ -1,29 +1,28 @@
-# Loja API - Aplicacao back-end em Java
+# Loja API - Aplicação back-end em Java
 
-Aplicacao back-end completa em Java puro para demonstrar POO, excecoes,
-colecoes e operacoes CRUD por meio de uma API HTTP.
+Aplicação back-end completa em Java puro para demonstrar POO, exceções,
+coleções e operações CRUD por meio de uma API HTTP.
 
 ## Requisitos
 
 - JDK 17 ou superior
-- Terminal com `javac` e `java` disponiveis
+- Terminal com `javac` e `java` disponíveis
 
-Nao e necessario Maven, Gradle ou banco de dados externo. Os dados ficam em
-memoria enquanto a aplicacao esta rodando.
+Não é necessário Maven, Gradle ou banco de dados externo. Os dados ficam em
+memória enquanto a aplicação está rodando.
 
-## Como baixar o codigo fonte pelo GitHub
+## Como baixar o código-fonte pelo GitHub
 
-Depois que o projeto estiver no GitHub, qualquer pessoa pode baixar o codigo
-fonte clonando o repositorio:
+Qualquer pessoa pode baixar o código-fonte clonando o repositório:
 
 ```bash
 git clone https://github.com/RDG547/loja-api-java.git
 cd loja-api-java
 ```
 
-Se a pessoa nao tiver Git instalado, tambem pode abrir o repositorio no
+Se a pessoa não tiver Git instalado, também pode abrir o repositório no
 navegador, clicar em **Code**, depois em **Download ZIP**, extrair o arquivo e
-abrir a pasta extraida no terminal.
+abrir a pasta extraída no terminal.
 
 ## Como compilar
 
@@ -38,7 +37,7 @@ javac -encoding UTF-8 -d out $(find src/main/java -name "*.java")
 java -cp out br.com.entrega.Main 8080
 ```
 
-Se a porta nao for informada, a API usa `8080`.
+Se a porta não for informada, a API usa `8080`.
 
 Depois de iniciar, acesse:
 
@@ -48,14 +47,14 @@ http://localhost:8080/api/status
 
 ## Endpoints
 
-| Metodo | Rota | Descricao |
+| Método | Rota | Descrição |
 | --- | --- | --- |
-| GET | `/api/status` | Verifica se a API esta ativa |
-| GET | `/api/usuarios` | Lista usuarios |
-| GET | `/api/usuarios/{id}` | Busca usuario por id |
-| POST | `/api/usuarios` | Cadastra usuario |
-| PUT | `/api/usuarios/{id}` | Atualiza usuario |
-| DELETE | `/api/usuarios/{id}` | Remove usuario |
+| GET | `/api/status` | Verifica se a API está ativa |
+| GET | `/api/usuarios` | Lista usuários |
+| GET | `/api/usuarios/{id}` | Busca usuário por id |
+| POST | `/api/usuarios` | Cadastra usuário |
+| PUT | `/api/usuarios/{id}` | Atualiza usuário |
+| DELETE | `/api/usuarios/{id}` | Remove usuário |
 | GET | `/api/produtos` | Lista produtos |
 | GET | `/api/produtos/{id}` | Busca produto por id |
 | POST | `/api/produtos` | Cadastra produto |
@@ -64,7 +63,7 @@ http://localhost:8080/api/status
 
 ## Exemplos de teste com curl
 
-Criar usuario:
+Criar usuário:
 
 ```bash
 curl -s -X POST http://localhost:8080/api/usuarios \
@@ -72,18 +71,18 @@ curl -s -X POST http://localhost:8080/api/usuarios \
   -d '{"nome":"Ana Souza","email":"ana@email.com","perfil":"CLIENTE"}'
 ```
 
-Listar usuarios:
+Listar usuários:
 
 ```bash
 curl -s http://localhost:8080/api/usuarios
 ```
 
-Criar produto fisico:
+Criar produto físico:
 
 ```bash
 curl -s -X POST http://localhost:8080/api/produtos \
   -H "Content-Type: application/json" \
-  -d '{"tipo":"FISICO","nome":"Teclado","descricao":"Teclado mecanico","preco":250.0,"pesoKg":0.9,"estoque":12}'
+  -d '{"tipo":"FISICO","nome":"Teclado","descricao":"Teclado mecânico","preco":250.0,"pesoKg":0.9,"estoque":12}'
 ```
 
 Criar produto digital:
@@ -102,16 +101,16 @@ curl -s -X PUT http://localhost:8080/api/produtos/1 \
   -d '{"nome":"Notebook Pro","preco":4599.9,"estoque":4}'
 ```
 
-Remover usuario:
+Remover usuário:
 
 ```bash
 curl -s -X DELETE http://localhost:8080/api/usuarios/1
 ```
 
-## Observacoes
+## Observações
 
-- A base de dados e simulada em memoria por meio de `HashMap`.
+- A base de dados é simulada em memória por meio de `HashMap`.
 - As listagens retornam `ArrayList`.
-- Os erros sao tratados por excecoes personalizadas e devolvidos em JSON.
-- O projeto usa heranca e polimorfismo em `Pessoa -> Usuario` e em
+- Os erros são tratados por exceções personalizadas e devolvidos em JSON.
+- O projeto usa herança e polimorfismo em `Pessoa -> Usuario` e em
   `Produto -> ProdutoFisico/ProdutoDigital`.
